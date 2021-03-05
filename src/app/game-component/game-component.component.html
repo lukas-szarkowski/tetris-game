@@ -1,6 +1,11 @@
-<tetris-core #game>
+<tetris-core #game
+  (lineCleared)="onLineCleared()"
+>
 </tetris-core>
 <div class="game-control">
+  <div class="points-area">
+    <h5>Player's points: <span class="label label-primary">{{ points }}</span></h5>
+  </div>
   <div class="block-control">
     <button (click)="game.actionLeft()" class="btn btn-primary">Left</button>
     <button (click)="game.actionDown()" class="btn btn-primary">Down</button>
@@ -19,7 +24,8 @@
   </div>
   <div class="game-state-control">
     <button (click)="game.actionStart()" class="btn btn-success button-down">Start</button>
-    <button (click)="game.actionStop()" class="btn btn-danger button-down">Stop</button>
+    <button (click)="game.actionStop()" class="btn btn-warning button-down">Stop</button>
     <button (click)="game.actionReset()" class="btn btn-secondary button-down">Reset</button>
+    <button (click)="onExitGame()"  class="btn btn-danger button-down">Exit</button>
   </div>
 </div>

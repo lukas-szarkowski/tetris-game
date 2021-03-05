@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {Hotkey, HotkeysService} from 'angular2-hotkeys';
 import { TetrisCoreComponent } from 'ngx-tetris';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-component',
@@ -9,7 +10,7 @@ import { TetrisCoreComponent } from 'ngx-tetris';
 })
 export class GameComponentComponent implements OnInit {
 
-  constructor(private _hotkeysService: HotkeysService) {
+  constructor(private _hotkeysService: HotkeysService, private router: Router) {
     this._addHotkeys();
    }
 
@@ -19,6 +20,9 @@ export class GameComponentComponent implements OnInit {
   @ViewChild('game')
   private _tetris: TetrisCoreComponent
 
+
+  public points : number = 0;
+
   public moveLeft = false;
   public moveDown = false;
   public moveRight = false;
@@ -27,11 +31,22 @@ export class GameComponentComponent implements OnInit {
   public stop = false;
   public reset = false;
   
+
+  onLineCleared() {
+
+    console.log('LineCleared');
+
+    this.points += 10
+    console.log(this.points)
+  }
+
   private _addHotkeys() {
     this._hotkeysService.add(new Hotkey('left', (event: KeyboardEvent): boolean => {
       this._tetris.actionLeft();
       return false; 
   }));
+
+  
 
   this._hotkeysService.add(new Hotkey('down', (event: KeyboardEvent): boolean => {
     this._tetris.actionDown();
@@ -48,6 +63,10 @@ export class GameComponentComponent implements OnInit {
     return false;
   }));
 
+  }
+
+  onExitGame() {
+    this.router.navigate(['']);
   }
 
 }
