@@ -22,6 +22,7 @@ export class GameComponentComponent implements OnInit {
 
 
   public points : number = 0;
+  public message : string = '';
 
   public moveLeft = false;
   public moveDown = false;
@@ -30,14 +31,20 @@ export class GameComponentComponent implements OnInit {
   public start = false;
   public stop = false;
   public reset = false;
+
   
 
+
   onLineCleared() {
-
-    console.log('LineCleared');
-
     this.points += 10
-    console.log(this.points)
+  }
+
+  onGameOver() {
+    this.message='Game over. Try again';
+  }
+
+  onClearMessage() {
+    this.message = "";
   }
 
   private _addHotkeys() {

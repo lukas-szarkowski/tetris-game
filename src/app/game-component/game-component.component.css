@@ -26,8 +26,23 @@
 }
 
 .game-state-control {
-    margin-top: 50px;
-    margin-left: 60px;
+    margin-top: 0;
+    margin-left: 41px;
     display: flex;
     flex-direction: column;
+}
+
+.message-alert {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.clear-message {
+    color: red;
+    margin-left: 12px;
+}
+
+.clear-message:hover {
+    cursor: pointer;
 }

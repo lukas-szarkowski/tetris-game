@@ -1,5 +1,6 @@
 <tetris-core #game
   (lineCleared)="onLineCleared()"
+  (gameOver)="onGameOver()"
 >
 </tetris-core>
 <div class="game-control">
@@ -22,6 +23,12 @@
       <li>Press space to <strong>rotate block</strong></li>
     </ul>
   </div>
+    <div *ngIf="message" class="alert alert-danger message-alert">
+      <span>
+        {{ message }}
+      </span>
+      <span (click)="onClearMessage()" class="clear-message">x</span>
+    </div>
   <div class="game-state-control">
     <button (click)="game.actionStart()" class="btn btn-success button-down">Start</button>
     <button (click)="game.actionStop()" class="btn btn-warning button-down">Stop</button>
