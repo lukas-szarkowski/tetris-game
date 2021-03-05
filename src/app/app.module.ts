@@ -4,15 +4,26 @@ import {HotkeyModule} from 'angular2-hotkeys'
 
 import { AppComponent } from './app.component';
 import {TetrisCoreModule} from 'ngx-tetris';
+import { IntroComponentComponent } from './intro-component/intro-component.component';
+import { GameComponentComponent } from './game-component/game-component.component';
+import { Routes, RouterModule } from '@angular/router';
 
+
+const appRoutes: Routes = [
+  { path: '', component: IntroComponentComponent },
+  { path: 'game', component: GameComponentComponent }
+]
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IntroComponentComponent,
+    GameComponentComponent
   ],
   imports: [
     BrowserModule,
     TetrisCoreModule,
     HotkeyModule.forRoot(),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

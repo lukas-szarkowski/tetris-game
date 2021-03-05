@@ -1,0 +1,22 @@
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    border: 1px solid black;
+    width: 40%;
+}
+
+.intro-header {
+    width: 50%;
+    margin: auto;
+}
+
+.introductory-text {
+    width: 56%;
+    margin: auto;
+}
+
+.submit-button {
+    margin-bottom: 10px;
+}
