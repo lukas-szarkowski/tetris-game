@@ -1,1 +1,25 @@
-<p>game-component works!</p>
+<tetris-core #game>
+</tetris-core>
+<div class="game-control">
+  <div class="block-control">
+    <button (click)="game.actionLeft()" class="btn btn-primary">Left</button>
+    <button (click)="game.actionDown()" class="btn btn-primary">Down</button>
+    <button (click)="game.actionRight()" class="btn btn-primary">Right</button>
+  </div>
+  <div class="rotate-button">
+    <button (click)="game.actionRotate()" class="btn btn-primary">Rotate block</button>
+  </div>
+  <div class="control-information">
+    <ul>
+      <li>Press left arrow to <strong>move left</strong></li>
+      <li>Press down arrow to <strong>move down</strong></li>
+      <li>Press right arrow to <strong>move right</strong></li>
+      <li>Press space to <strong>rotate block</strong></li>
+    </ul>
+  </div>
+  <div class="game-state-control">
+    <button (click)="game.actionStart()" class="btn btn-success button-down">Start</button>
+    <button (click)="game.actionStop()" class="btn btn-danger button-down">Stop</button>
+    <button (click)="game.actionReset()" class="btn btn-secondary button-down">Reset</button>
+  </div>
+</div>
