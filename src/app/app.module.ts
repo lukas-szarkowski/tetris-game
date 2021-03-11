@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HotkeyModule} from 'angular2-hotkeys'
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import {TetrisCoreModule} from 'ngx-tetris';
 import { IntroComponentComponent } from './intro-component/intro-component.component';
 import { GameComponentComponent } from './game-component/game-component.component';
 import { Routes, RouterModule } from '@angular/router';
+import { PlayerFormComponent } from './player-form/player-form.component';
 
 
 const appRoutes: Routes = [
@@ -17,13 +19,15 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     IntroComponentComponent,
-    GameComponentComponent
+    GameComponentComponent,
+    PlayerFormComponent
   ],
   imports: [
     BrowserModule,
     TetrisCoreModule,
     HotkeyModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
