@@ -11,9 +11,4 @@ export interface Player {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  players: Array<Player> = [];
-
-  add(player: Player) {
-    this.players.push(player);
-  }
 }

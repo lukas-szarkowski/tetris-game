@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HotkeyModule} from 'angular2-hotkeys'
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import {TetrisCoreModule} from 'ngx-tetris';
@@ -9,6 +9,7 @@ import { IntroComponentComponent } from './intro-component/intro-component.compo
 import { GameComponentComponent } from './game-component/game-component.component';
 import { Routes, RouterModule } from '@angular/router';
 import { PlayerFormComponent } from './player-form/player-form.component';
+import { PlayersListComponent } from './players-list/players-list.component';
 
 
 const appRoutes: Routes = [
@@ -20,13 +21,15 @@ const appRoutes: Routes = [
     AppComponent,
     IntroComponentComponent,
     GameComponentComponent,
-    PlayerFormComponent
+    PlayerFormComponent,
+    PlayersListComponent
   ],
   imports: [
     BrowserModule,
     TetrisCoreModule,
     HotkeyModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],
