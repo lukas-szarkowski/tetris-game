@@ -4,6 +4,17 @@
     </div>
     <p class="introductory-text">Welcome to our awesome Tetris Game!!!</p>
     <div>
-        <app-player-form></app-player-form>
+        <div>
+            <app-player-form
+                (addPlayer)="add($event)"
+            ></app-player-form>
+        </div>
+        <div *ngIf="players.length > 0">
+            <app-players-list
+                (clearList)="clear()"
+                (removeAtIndex)="remove($event)"
+                [players]="players"
+            ></app-players-list>
+        </div>
     </div>
 </div>
