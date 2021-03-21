@@ -6,6 +6,8 @@
   </tetris-core>
   <div class="game-control">
     <div class="points-area">
+      <h4 *ngIf="playerName else noPlayer">Hello, {{ playerName }}</h4>
+      <ng-template #noPlayer><h4>No player registered</h4></ng-template>
       <h5>Player's points: <span class="label label-primary">{{ points }}</span></h5>
     </div>
     <div class="block-control">

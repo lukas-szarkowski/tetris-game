@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {Hotkey, HotkeysService} from 'angular2-hotkeys';
 import { TetrisCoreComponent } from 'ngx-tetris';
 import { Router } from '@angular/router';
+import {Player} from "../models/player";
+import {PlayerService} from "../services/player.service";
 
 @Component({
   selector: 'app-game-component',
@@ -9,12 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./game-component.component.css']
 })
 export class GameComponentComponent implements OnInit {
-
-  constructor(private _hotkeysService: HotkeysService, private router: Router) {
+  public playerName : string
+  constructor(private _hotkeysService: HotkeysService, private router: Router, public playerService : PlayerService) {
     this._addHotkeys();
    }
 
   ngOnInit(): void {
+    this.playerName = this.playerService.playerData.name;
   }
 
   @ViewChild('game')
@@ -32,7 +35,7 @@ export class GameComponentComponent implements OnInit {
   public stop = false;
   public reset = false;
 
-  
+
 
 
   onLineCleared() {
@@ -50,14 +53,14 @@ export class GameComponentComponent implements OnInit {
   private _addHotkeys() {
     this._hotkeysService.add(new Hotkey('left', (event: KeyboardEvent): boolean => {
       this._tetris.actionLeft();
-      return false; 
+      return false;
   }));
 
-  
+
 
   this._hotkeysService.add(new Hotkey('down', (event: KeyboardEvent): boolean => {
     this._tetris.actionDown();
-    return false; 
+    return false;
 }));
 
   this._hotkeysService.add(new Hotkey('right', (event: KeyboardEvent): boolean => {
@@ -75,5 +78,4 @@ export class GameComponentComponent implements OnInit {
   onExitGame() {
     this.router.navigate(['']);
   }
-
 }

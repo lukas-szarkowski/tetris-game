@@ -1,25 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from '../app.component'
+import { Player } from '../app.component';
+import {PlayerService} from "../services/player.service";
+
 @Component({
   selector: 'app-intro-component',
   templateUrl: './intro-component.component.html',
   styleUrls: ['./intro-component.component.css']
 })
 export class IntroComponentComponent implements OnInit {
-  players: Array<Player> = [];
-  
+
+  constructor(private playerService : PlayerService) {
+  }
+
   ngOnInit(): void {
   }
 
-  add(player: Player) {
-    this.players.push(player);
-  }
-
-  removePlayer(index) {
-    this.players.splice(index, 1);
-  }
-
-  clear() {
-    this.players = [];
+  public onFormSubmit(pData) {
+    this.playerService.playerData = pData;
   }
 }

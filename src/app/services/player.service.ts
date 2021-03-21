@@ -5,20 +5,7 @@ import {Player} from '../models/player';
   providedIn: 'root'
 })
 export class PlayerService {
-  lastId: number = 0;
-
-  players: Player[] = [];
+  playerData : Player;
 
   constructor() { }
-
-  addPlayer(player: Player) {
-    if(!player.id) {
-      player.id = ++this.lastId;
-    }
-    this.players.push(player)
-  }
-
-  getAllPlayers(): Player[] {
-    return this.players;
-  }
 }
