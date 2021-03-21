@@ -10,11 +10,13 @@ import { Router } from '@angular/router'
   styleUrls: ['./player-form.component.css']
 })
 export class PlayerFormComponent implements OnInit {
+  @Output() submitPlayer = new EventEmitter<Player>()
   @Input() public name: string;
   @Output() addPlayer = new EventEmitter<Player>()
   @Input() public email: string;
   playerForm : FormGroup;
-  
+  public player : Player;
+
 
   constructor(private router: Router, private formBuilder : FormBuilder) { }
 
@@ -58,6 +60,8 @@ export class PlayerFormComponent implements OnInit {
 
 
   onSubmitButton() {
+    this.submitPlayer.emit(this.playerForm.value);
     this.router.navigate(['game'])
+    console.log(this.playerForm.value)
   }
 }
