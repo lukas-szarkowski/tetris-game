@@ -10,11 +10,13 @@ import { GameComponentComponent } from './game-component/game-component.componen
 import { Routes, RouterModule } from '@angular/router';
 import { PlayerFormComponent } from './player-form/player-form.component';
 import { PlayersListComponent } from './players-list/players-list.component';
+import {ScoresComponent} from "./scores/scores.component";
 
 
 const appRoutes: Routes = [
   { path: '', component: IntroComponentComponent },
-  { path: 'game', component: GameComponentComponent }
+  { path: 'game', component: GameComponentComponent },
+  { path: 'scores', component: ScoresComponent }
 ]
 @NgModule({
   declarations: [

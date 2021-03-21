@@ -3,8 +3,9 @@
     flex-direction: column;
     justify-content: center;
     margin-top: 10px;
+    margin-left: 140px;
     border: 1px solid black;
-    width: 40%;
+    width: 100%;
 }
 
 .intro-header {
