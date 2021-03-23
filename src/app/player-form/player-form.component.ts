@@ -24,31 +24,6 @@ export class PlayerFormComponent implements OnInit {
     this.playerForm = this.buildPlayerForm();
   }
 
-  add(form: FormGroup) {
-    const name = this.playerForm.value.name;
-    const email = this.playerForm.value.email;
-
-      this._addPlayer(name, email);
-      this.playerForm.reset();
-
-      this.router.navigate(['/game']);
-
-     console.log(name, email)
-  }
-
-
-  verifyAndPlay(event) {
-    this.add(event)
-  }
-
-
-  private _addPlayer(name, email) {
-    this.addPlayer.emit({
-      name: name,
-      email: email
-    })
-  }
-
 
   buildPlayerForm() {
     return this.formBuilder.group({

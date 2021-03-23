@@ -10,13 +10,12 @@ import { GameComponentComponent } from './game-component/game-component.componen
 import { Routes, RouterModule } from '@angular/router';
 import { PlayerFormComponent } from './player-form/player-form.component';
 import { PlayersListComponent } from './players-list/players-list.component';
-import {ScoresComponent} from "./scores/scores.component";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 const appRoutes: Routes = [
   { path: '', component: IntroComponentComponent },
   { path: 'game', component: GameComponentComponent },
-  { path: 'scores', component: ScoresComponent }
 ]
 @NgModule({
   declarations: [
@@ -32,7 +31,8 @@ const appRoutes: Routes = [
     HotkeyModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

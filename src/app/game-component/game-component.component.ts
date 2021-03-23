@@ -4,6 +4,7 @@ import { TetrisCoreComponent } from 'ngx-tetris';
 import { Router } from '@angular/router';
 import {Player} from "../models/player";
 import {PlayerService} from "../services/player.service";
+import {ScoreService} from "../services/score.service";
 
 @Component({
   selector: 'app-game-component',
@@ -12,7 +13,12 @@ import {PlayerService} from "../services/player.service";
 })
 export class GameComponentComponent implements OnInit {
   public playerName : string
-  constructor(private _hotkeysService: HotkeysService, private router: Router, public playerService : PlayerService) {
+  constructor(
+    private _hotkeysService: HotkeysService,
+    private router: Router,
+    public playerService : PlayerService,
+    public scoreService : ScoreService
+  ) {
     this._addHotkeys();
    }
 
@@ -26,6 +32,8 @@ export class GameComponentComponent implements OnInit {
 
   public points : number = 0;
   public message : string = '';
+  public scores = [];
+  public highscore = 0;
 
   public moveLeft = false;
   public moveDown = false;
@@ -44,6 +52,9 @@ export class GameComponentComponent implements OnInit {
 
   onGameOver() {
     this.message='Game over. Try again';
+    this.scores.push(this.points);
+    this.highscore = Math.max(...this.scores)
+    console.log(this.highscore);
   }
 
   onClearMessage() {
@@ -77,5 +88,14 @@ export class GameComponentComponent implements OnInit {
 
   onExitGame() {
     this.router.navigate(['']);
+  }
+
+  saveScore(sData) {
+    this.scoreService.scoreData = sData
+  }
+
+  onStartGame() {
+    this._tetris.actionStart()
+    this.points = 0;
   }
 }
