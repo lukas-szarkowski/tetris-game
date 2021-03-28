@@ -1,30 +1,22 @@
 <form [formGroup]="playerForm">
-    <div class="form-group">
-        <label>Name</label>
-        <input
-            type="text"
-            class="form-control"
-            placeholder="Enter Name"
-            formControlName="name"
-        >
-        <p *ngIf="!playerForm.get('name').valid && playerForm.get('name').dirty" class="error">This field is required minimum 3 characters.</p>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <mat-form-field class="col-sm-12">
+        <label>Name:</label>
+        <input matInput class="form-control" formControlName="name" placeholder="name">
+        <p class="error-message" *ngIf="playerForm.get('name').hasError('required') && playerForm.get('name').dirty">This Fields is required</p>
+      </mat-form-field>
     </div>
-    <div class="form-group">
-        <label>Email address</label>
-        <input
-            type="email"
-            class="form-control"
-            placeholder="Enter E-mail"
-            formControlName="email"
-        >
-        <p *ngIf="!playerForm.get('email').valid && playerForm.get('email').dirty" class="error">This field is required minimum 3 characters.</p>
+    <div class="col-sm-12">
+      <mat-form-field class="col-sm-12">
+        <label>E-mail:</label>
+        <input matInput class="form-control" formControlName="email" placeholder="email">
+        <p class="error-message" *ngIf="playerForm.get('email').hasError('required') && playerForm.get('email').dirty">This Fields is required</p>
+        <p class="error-message" *ngIf="playerForm.get('email').hasError('email') && playerForm.get('email').dirty">This email is invalid</p>
+      </mat-form-field>
     </div>
-    <button
-        (click)="onSubmitButton()"
-        [disabled]="playerForm.invalid"
-        type="submit"
-        class="btn btn-success submit-button"
-    >
-        Verify and play!
-    </button>
+    <div class="col-sm-12 ml-3">
+      <button [disabled]="!playerForm.value.valid" class="btn btn-success">Verify and play</button>
+    </div>
+  </div>
 </form>

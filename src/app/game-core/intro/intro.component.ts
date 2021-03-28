@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Player } from '../../app.component';
+import {PlayerFormComponent} from "../player-form/player-form.component";
 
 @Component({
   selector: 'app-intro-component',
@@ -7,6 +8,7 @@ import { Player } from '../../app.component';
   styleUrls: ['./intro.component.scss']
 })
 export class IntroComponent implements OnInit {
+  @ViewChild('playerForm') playerForm : PlayerFormComponent
 
   constructor() {
   }

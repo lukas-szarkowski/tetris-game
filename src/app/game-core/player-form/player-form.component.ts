@@ -10,10 +10,6 @@ import { Router } from '@angular/router'
   styleUrls: ['./player-form.component.scss']
 })
 export class PlayerFormComponent implements OnInit {
-  @Output() submitPlayer = new EventEmitter<Player>()
-  @Input() public name: string;
-  @Output() addPlayer = new EventEmitter<Player>()
-  @Input() public email: string;
   playerForm : FormGroup;
   public player : Player;
 
@@ -21,47 +17,13 @@ export class PlayerFormComponent implements OnInit {
   constructor(private router: Router, private formBuilder : FormBuilder) { }
 
   ngOnInit(): void {
-    this.playerForm = this.buildPlayerForm();
+    this.buildPlayerForm();
   }
-
-  add(form: FormGroup) {
-    const name = this.playerForm.value.name;
-    const email = this.playerForm.value.email;
-
-      this._addPlayer(name, email);
-      this.playerForm.reset();
-
-      this.router.navigate(['/game']);
-
-     console.log(name, email)
-  }
-
-
-  verifyAndPlay(event) {
-    this.add(event)
-  }
-
-
-  private _addPlayer(name, email) {
-    this.addPlayer.emit({
-      name: name,
-      email: email
-    })
-  }
-
 
   buildPlayerForm() {
-    return this.formBuilder.group({
-      name: ['',[Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]]
+    this.playerForm = this.formBuilder.group({
+      name: ['', {validators: [Validators.required]}],
+      email: ['', {validators: [Validators.required, Validators.email]}]
     })
-  }
-
-
-
-  onSubmitButton() {
-    this.submitPlayer.emit(this.playerForm.value);
-    this.router.navigate(['game'])
-    console.log(this.playerForm.value)
   }
 }

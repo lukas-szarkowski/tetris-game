@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {MaterialModule} from "./material/material.module";
+import {GameCoreModule} from "./game-core/game-core.module";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {MaterialModule} from "./material/material.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    GameCoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
