@@ -2,15 +2,14 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {Hotkey, HotkeysService} from 'angular2-hotkeys';
 import { TetrisCoreComponent } from 'ngx-tetris';
 import { Router } from '@angular/router';
-import {Player} from "../models/player";
-import {PlayerService} from "../services/player.service";
+
 
 @Component({
   selector: 'app-game-component',
-  templateUrl: './game-component.component.html',
-  styleUrls: ['./game-component.component.css']
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.css']
 })
-export class GameComponentComponent implements OnInit {
+export class GameComponent implements OnInit {
   public playerName : string
   constructor(private _hotkeysService: HotkeysService, private router: Router, public playerService : PlayerService) {
     this._addHotkeys();
