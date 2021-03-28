@@ -7,7 +7,7 @@ import { Router } from '@angular/router'
 @Component({
   selector: 'app-player-form',
   templateUrl: './player-form.component.html',
-  styleUrls: ['./player-form.component.css']
+  styleUrls: ['./player-form.component.scss']
 })
 export class PlayerFormComponent implements OnInit {
   @Output() submitPlayer = new EventEmitter<Player>()
