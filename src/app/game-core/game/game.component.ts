@@ -2,22 +2,22 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {Hotkey, HotkeysService} from 'angular2-hotkeys';
 import { TetrisCoreComponent } from 'ngx-tetris';
 import { Router } from '@angular/router';
-import {Player} from "../models/player";
-import {PlayerService} from "../services/player.service";
+import {MatDialog} from "@angular/material/dialog";
+import {ScoreListDialogComponent} from "../score-list-dialog/score-list-dialog.component";
+
 
 @Component({
   selector: 'app-game-component',
-  templateUrl: './game-component.component.html',
-  styleUrls: ['./game-component.component.css']
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.scss']
 })
-export class GameComponentComponent implements OnInit {
+export class GameComponent implements OnInit {
   public playerName : string
-  constructor(private _hotkeysService: HotkeysService, private router: Router, public playerService : PlayerService) {
+  constructor(private _hotkeysService: HotkeysService, private router: Router, private dialog: MatDialog) {
     this._addHotkeys();
    }
 
   ngOnInit(): void {
-    this.playerName = this.playerService.playerData.name;
   }
 
   @ViewChild('game')
@@ -50,6 +50,10 @@ export class GameComponentComponent implements OnInit {
     this.message = "";
   }
 
+  openScores() {
+    this.dialog.open(ScoreListDialogComponent)
+  }
+
   private _addHotkeys() {
     this._hotkeysService.add(new Hotkey('left', (event: KeyboardEvent): boolean => {
       this._tetris.actionLeft();
@@ -74,6 +78,8 @@ export class GameComponentComponent implements OnInit {
   }));
 
   }
+
+
 
   onExitGame() {
     this.router.navigate(['']);
