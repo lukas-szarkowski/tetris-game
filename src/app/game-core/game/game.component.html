@@ -1,43 +1,26 @@
-<div class="game-container">
-  <tetris-core #game
-               (lineCleared)="onLineCleared()"
-               (gameOver)="onGameOver()"
-  >
-  </tetris-core>
-  <div class="game-control">
-    <div class="points-area">
-      <h4 *ngIf="playerName else noPlayer">Hello, {{ playerName }}</h4>
-      <ng-template #noPlayer><h4>No player registered</h4></ng-template>
-      <h5>Player's points: <span class="label label-primary">{{ points }}</span></h5>
-    </div>
-    <div class="block-control">
-      <button (click)="game.actionLeft()" class="btn btn-primary">Left</button>
-      <button (click)="game.actionDown()" class="btn btn-primary">Down</button>
-      <button (click)="game.actionRight()" class="btn btn-primary">Right</button>
-    </div>
-    <div class="rotate-button">
-      <button (click)="game.actionRotate()" class="btn btn-primary">Rotate block</button>
-    </div>
-    <div class="control-information">
-      <ul>
-        <li>Press left arrow to <strong>move left</strong></li>
-        <li>Press down arrow to <strong>move down</strong></li>
-        <li>Press right arrow to <strong>move right</strong></li>
-        <li>Press space to <strong>rotate block</strong></li>
-      </ul>
-    </div>
-    <div *ngIf="message" class="alert alert-danger message-alert">
-      <span>
-        {{ message }}
-      </span>
-      <span (click)="onClearMessage()" class="clear-message">x</span>
-    </div>
-    <div class="game-state-control">
-      <button (click)="game.actionStart()" class="btn btn-success button-down">Start</button>
-      <button (click)="game.actionStop()" class="btn btn-warning button-down">Stop</button>
-      <button (click)="game.actionReset()" class="btn btn-secondary button-down">Reset</button>
-      <button (click)="openScores()" class="btn btn-info button-down">Show scores</button>
-      <button (click)="onExitGame()" class="btn btn-danger button-down margin-top">Exit</button>
+<div class="container">
+  <div class="col-sm-12 col-md-8 col-lg-6 mt-1">
+    <div class="row">
+      <div class="col-sm-6">
+        <tetris-core #game
+                     (lineCleared)="onLineCleared()"
+                     (gameOver)="onGameOver()"
+        >
+        </tetris-core>
+      </div>
+      <div class="col-sm-4">
+        <h4 *ngIf="playerName else noPlayer">Hello, {{ playerName }}</h4>
+        <ng-template #noPlayer><h4>No player registered</h4></ng-template>
+        <h5>Player's points: <span class="label label-primary">{{ points }}</span></h5>
+          <div class="buttons-section">
+            <button (click)="game.actionStart()" class="btn btn-success col-sm-12">Start</button>
+            <button (click)="game.actionStop()" class="btn btn-warning col-sm-12 button-space">Stop</button>
+            <button (click)="game.actionReset()" class="btn btn-secondary col-sm-12 button-space">Reset</button>
+            <button (click)="openScores()" class="btn btn-info col-sm-12 button-space">Show scores</button>
+            <button (click)="onExitGame()" class="btn btn-danger col-sm-12 mt-2 button-space">Exit</button>
+          </div>
+        <button mat-raised-button (click)="openInstructions()" color="primary" class="manual-button col-sm-12">How to play</button>
+      </div>
     </div>
   </div>
 </div>

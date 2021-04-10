@@ -12,10 +12,11 @@ import { PlayerFormComponent } from './game-core/player-form/player-form.compone
 import {GameCoreModule} from "./game-core/game-core.module";
 import {MaterialModule} from "./material/material.module";
 import {AppRoutingModule} from "./app-routing.module";
-import { ScoreListDialogComponent } from './game-core/score-list-dialog/score-list-dialog.component';
+import { ScoreListDialogComponent } from './dialogs/score-list-dialog/score-list-dialog.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {GameService} from "./services/game.service";
 import {HttpClientModule} from "@angular/common/http";
+import { ControlInstructionsDialogComponent } from './dialogs/control-instructions-dialog/control-instructions-dialog.component';
 
 
 
@@ -23,6 +24,7 @@ import {HttpClientModule} from "@angular/common/http";
   declarations: [
     AppComponent,
     ScoreListDialogComponent,
+    ControlInstructionsDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Best scores list</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+    <ul class="list-group" *ngFor="let score of scores; let i = index">
+      <li class="list-group-item d-flex justify-content-between align-items-center">{{ i + 1 }}. {{ score.name }}
+      <span class="badge badge-pill">{{ score.score }} points</span></li>
+    </ul>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button
+      mat-raised-button
+      mat-dialog-close
+      color="primary"
+    >
+      Close
+    </button>
+</mat-dialog-actions>

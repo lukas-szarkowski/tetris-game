@@ -1,16 +1,10 @@
 .intro-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 10px;
-    margin-left: 140px;
-    border: 1px solid black;
-    width: 100%;
+    margin: auto;
+    width: 50%;
 }
 
 .intro-header {
-    width: 50%;
-    margin: auto;
+    margin-left: 70px;
 }
 
 .introductory-text {

@@ -10,8 +10,13 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig, MatSnackBarModule} fro
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {ScoreListDialogComponent} from "../game-core/score-list-dialog/score-list-dialog.component";
+import {ScoreListDialogComponent} from "../dialogs/score-list-dialog/score-list-dialog.component";
+import {MatDividerModule} from "@angular/material/divider";
 
+const MAT_DIALOG_GLOBAL_CONFIG = {
+  width: '700px',
+  hasBackdrop: true
+}
 
 const  MATERIAL_MODULES = [
   MatIconModule,
@@ -23,11 +28,14 @@ const  MATERIAL_MODULES = [
   MatSnackBarModule,
   MatCheckboxModule,
   MatSelectModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatDividerModule
 ]
 
 @NgModule({
   exports: [...MATERIAL_MODULES],
-  entryComponents: [ScoreListDialogComponent]
+  providers: [
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: MAT_DIALOG_GLOBAL_CONFIG }
+  ]
 })
 export class MaterialModule { }

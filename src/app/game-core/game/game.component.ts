@@ -3,7 +3,8 @@ import {Hotkey, HotkeysService} from 'angular2-hotkeys';
 import { TetrisCoreComponent } from 'ngx-tetris';
 import { Router } from '@angular/router';
 import {MatDialog} from "@angular/material/dialog";
-import {ScoreListDialogComponent} from "../score-list-dialog/score-list-dialog.component";
+import {ScoreListDialogComponent} from "../../dialogs/score-list-dialog/score-list-dialog.component";
+import {ControlInstructionsDialogComponent} from "../../dialogs/control-instructions-dialog/control-instructions-dialog.component";
 
 
 @Component({
@@ -52,6 +53,10 @@ export class GameComponent implements OnInit {
 
   openScores() {
     this.dialog.open(ScoreListDialogComponent)
+  }
+
+  openInstructions() {
+    this.dialog.open(ControlInstructionsDialogComponent)
   }
 
   private _addHotkeys() {

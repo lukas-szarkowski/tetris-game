@@ -1,66 +1,12 @@
-.button-down {
-    width: 100px;
-    margin-top: 5px;
-}
-.game-control {
-    display: flex;
-    flex-direction: column;
-    width: 15%;
+.button-space {
+  margin-top: 15px;
 }
 
-.block-control {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 20px;
-    width: 230px;
+
+.manual-button {
+  margin-top: 150px;
 }
 
-.rotate-button {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
-    width: 225px;
-}
-
-.control-information {
-    margin-top: 35px;
-    width: 300px;
-}
-
-.game-state-control {
-    margin-top: 0;
-    margin-left: 41px;
-    display: flex;
-    flex-direction: column;
-}
-
-.message-alert {
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: row;
-}
-
-.clear-message {
-    color: red;
-    margin-left: 12px;
-}
-
-.clear-message:hover {
-    cursor: pointer;
-}
-
-.game-container {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid black;
-}
-
-.points-area {
-  width: 300px;
-  margin-left: 10px;
-}
-
-.margin-top {
-  margin-top: 30px;
+.buttons-section {
+  margin-top:45px;
 }

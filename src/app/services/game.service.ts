@@ -7,7 +7,8 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class GameService {
-  private API_URL = "http://localhost:8080"
+  private API_URL = "http://localhost:8080";
+  private player = {};
 
   constructor(private http : HttpClient) { }
 
@@ -15,5 +16,9 @@ export class GameService {
     return this.http.get<Score[]>(this.API_URL + `/scores`, {headers: {
       'Accept': 'application/json'
       }})
+  }
+
+  setPlayer(option, value) {
+    this.player[option] = value;
   }
 }
