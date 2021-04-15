@@ -17,6 +17,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {GameService} from "./services/game.service";
 import {HttpClientModule} from "@angular/common/http";
 import { ControlInstructionsDialogComponent } from './dialogs/control-instructions-dialog/control-instructions-dialog.component';
+import { GameOverDialogComponent } from './dialogs/game-over-dialog/game-over-dialog.component';
 
 
 
@@ -25,6 +26,7 @@ import { ControlInstructionsDialogComponent } from './dialogs/control-instructio
     AppComponent,
     ScoreListDialogComponent,
     ControlInstructionsDialogComponent,
+    GameOverDialogComponent,
   ],
   imports: [
     BrowserModule,

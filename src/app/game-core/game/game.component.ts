@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import {MatDialog} from "@angular/material/dialog";
 import {ScoreListDialogComponent} from "../../dialogs/score-list-dialog/score-list-dialog.component";
 import {ControlInstructionsDialogComponent} from "../../dialogs/control-instructions-dialog/control-instructions-dialog.component";
+import {GameService} from "../../services/game.service";
+import {GameOverDialogComponent} from "../../dialogs/game-over-dialog/game-over-dialog.component";
 
 
 @Component({
@@ -14,11 +16,17 @@ import {ControlInstructionsDialogComponent} from "../../dialogs/control-instruct
 })
 export class GameComponent implements OnInit {
   public playerName : string
-  constructor(private _hotkeysService: HotkeysService, private router: Router, private dialog: MatDialog) {
+  constructor(
+    private _hotkeysService: HotkeysService,
+    private router: Router,
+    private dialog: MatDialog,
+    private gameService: GameService
+  ) {
     this._addHotkeys();
    }
 
   ngOnInit(): void {
+    this.playerName = this.gameService.playerName;
   }
 
   @ViewChild('game')
@@ -45,6 +53,7 @@ export class GameComponent implements OnInit {
 
   onGameOver() {
     this.message='Game over. Try again';
+    this.dialog.open(GameOverDialogComponent)
   }
 
   onClearMessage() {

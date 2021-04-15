@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import {Score} from "../models/score";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Player} from "../models/player";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
   private API_URL = "http://localhost:8080";
-  private player = {};
+  playerName: string;
+
 
   constructor(private http : HttpClient) { }
 
@@ -16,9 +18,5 @@ export class GameService {
     return this.http.get<Score[]>(this.API_URL + `/scores`, {headers: {
       'Accept': 'application/json'
       }})
-  }
-
-  setPlayer(option, value) {
-    this.player[option] = value;
   }
 }

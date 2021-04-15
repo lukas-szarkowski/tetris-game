@@ -12,6 +12,7 @@ import {GameService} from "../../services/game.service"
 })
 export class PlayerFormComponent implements OnInit {
 
+  playerName :string = "";
   constructor(
   private router: Router,
   private gameService: GameService
@@ -20,5 +21,8 @@ export class PlayerFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+onSubmitForm() {
+    this.gameService.playerName = this.playerName;
+    this.router.navigate(["/game"])
+}
 }
