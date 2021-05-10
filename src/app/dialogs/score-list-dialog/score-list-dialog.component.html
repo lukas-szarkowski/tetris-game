@@ -3,7 +3,11 @@
     <h2>Scores list</h2>
   </div>
   <div>
-    <button *ngIf="sortingMode === 'desc' else sortAsc" mat-button (click)="onChangeSortingModeToAsc()">
+    <button *ngIf="sortingType==='descending' else otherSortingButton"
+      (click)="changeSortingTypeAscending()"
+      mat-button
+      color="primary"
+    >
       <mat-icon>sort</mat-icon>
       <mat-icon>arrow_downward</mat-icon>
     </button>
@@ -11,7 +15,7 @@
 </div>
 <mat-divider></mat-divider>
 <mat-dialog-content>
-    <ul class="list-group" *ngFor="let score of scores | slice:scores.length-10; let i = index">
+    <ul class="list-group" *ngFor="let score of sortedData" >
       <li class="list-group-item d-flex justify-content-between align-items-center">{{ score.name }}
       <span class="badge badge-pill">{{ score.score }} points</span></li>
     </ul>
@@ -25,8 +29,12 @@
       Close
     </button>
 </mat-dialog-actions>
-<ng-template #sortAsc>
-  <button (click)="onChangeSortingModeToDesc()" mat-button>
+<ng-template #otherSortingButton>
+  <button
+    (click)="changeSortingTypeDescending()"
+    mat-button
+    color="primary"
+  >
     <mat-icon>sort</mat-icon>
     <mat-icon>arrow_upward</mat-icon>
   </button>

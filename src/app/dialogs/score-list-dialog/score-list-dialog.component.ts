@@ -9,7 +9,7 @@ import {Score} from "../../models/score";
 })
 export class ScoreListDialogComponent implements OnInit {
   scores : Score[];
-  sortingMode: string = "desc";
+  sortingType: string = 'descending';
 
   constructor(private gameService: GameService) { }
 
@@ -20,21 +20,28 @@ export class ScoreListDialogComponent implements OnInit {
   loadScores() : void {
     this.gameService.getScores().subscribe((scores) => {
       this.scores = scores;
-      if (this.sortingMode === "desc") {
-        scores.sort((a,b) => b.score - a.score)
-      } else if (this.sortingMode === "asc") {
-        scores.sort((a,b) => a.score - b.score)
+    })
+  }
+
+  get sortedData() {
+    return this.scores.sort((a,b)=> {
+      if (this.sortingType === 'descending') {
+        return b.score - a.score;
+      } else if (this.sortingType === 'ascending') {
+        return a.score - b.score;
       }
     })
   }
 
-  onChangeSortingModeToAsc() {
-    this.sortingMode = "asc";
-    console.log(this.sortingMode)
+  changeSortingTypeAscending() {
+    this.sortingType = 'ascending';
+
   }
 
-  onChangeSortingModeToDesc() {
-    this.sortingMode = "desc"
-    console.log(this.sortingMode)
+  changeSortingTypeDescending() {
+    this.sortingType = 'descending';
+    
   }
 }
+
+
