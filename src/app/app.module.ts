@@ -5,36 +5,39 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import {TetrisCoreModule} from 'ngx-tetris';
-import { IntroComponentComponent } from './intro-component/intro-component.component';
-import { GameComponentComponent } from './game-component/game-component.component';
+import { IntroComponent } from './game-core/intro/intro.component';
+import { GameComponent } from './game-core/game/game.component';
 import { Routes, RouterModule } from '@angular/router';
-import { PlayerFormComponent } from './player-form/player-form.component';
-import { PlayersListComponent } from './players-list/players-list.component';
-import {ScoresComponent} from "./scores/scores.component";
+import { PlayerFormComponent } from './game-core/player-form/player-form.component';
+import {GameCoreModule} from "./game-core/game-core.module";
+import {MaterialModule} from "./material/material.module";
+import {AppRoutingModule} from "./app-routing.module";
+import { ScoreListDialogComponent } from './dialogs/score-list-dialog/score-list-dialog.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {GameService} from "./services/game.service";
+import {HttpClientModule} from "@angular/common/http";
+import { ControlInstructionsDialogComponent } from './dialogs/control-instructions-dialog/control-instructions-dialog.component';
+import { GameOverDialogComponent } from './dialogs/game-over-dialog/game-over-dialog.component';
 
 
-const appRoutes: Routes = [
-  { path: '', component: IntroComponentComponent },
-  { path: 'game', component: GameComponentComponent },
-  { path: 'scores', component: ScoresComponent }
-]
+
 @NgModule({
   declarations: [
     AppComponent,
-    IntroComponentComponent,
-    GameComponentComponent,
-    PlayerFormComponent,
-    PlayersListComponent
+    ScoreListDialogComponent,
+    ControlInstructionsDialogComponent,
+    GameOverDialogComponent,
   ],
   imports: [
     BrowserModule,
-    TetrisCoreModule,
-    HotkeyModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule,
-    FormsModule
+    BrowserAnimationsModule,
+    GameCoreModule,
+    MaterialModule,
+    AppRoutingModule,
+    HttpClientModule,
+    HotkeyModule.forRoot()
   ],
-  providers: [],
+  providers: [GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

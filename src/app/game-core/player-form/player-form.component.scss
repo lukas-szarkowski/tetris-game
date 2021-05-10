@@ -1,0 +1,20 @@
+.submit-button {
+    margin-bottom: 10px;
+}
+
+.error {
+    background-color: red;
+    color: white;
+    font-size: 11px;
+    padding: 4px 0;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  border: 1px lightgray solid;
+  padding: 10px;
+  border-radius: 15px;
+}

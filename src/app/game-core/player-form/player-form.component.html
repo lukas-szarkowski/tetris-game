@@ -1,0 +1,15 @@
+<div class="form-container">
+  <h3>Verify user</h3>
+  <mat-form-field>
+    <input type="text" [(ngModel)]="playerName" matInput required placeholder="Your name">
+  </mat-form-field>
+  <button
+    class="col-sm-4"
+    mat-raised-button
+    color="primary"
+    [disabled]="playerName === ''"
+    (click)="onSubmitForm()"
+  >
+    Play
+  </button>
+</div>
