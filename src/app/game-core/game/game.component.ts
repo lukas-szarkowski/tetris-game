@@ -15,7 +15,10 @@ import {GameOverDialogComponent} from "../../dialogs/game-over-dialog/game-over-
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  public playerName : string
+  public playerName : string;
+  isGameStarted : boolean = false;
+  isGameOvered : boolean = false;
+
   constructor(
     private _hotkeysService: HotkeysService,
     private router: Router,
@@ -27,6 +30,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.playerName = this.gameService.playerName;
+    console.log(this.isGameStarted)
   }
 
   @ViewChild('game')
@@ -51,9 +55,27 @@ export class GameComponent implements OnInit {
     this.points += 10
   }
 
+  onResetGame() {
+    this._tetris.actionReset();
+    this.points = 0;
+    this.isGameOvered = false;
+}
+
+onStartGame() {
+    this._tetris.actionStart();
+    this.isGameStarted = true;
+}
+
+onStopGame() {
+    this._tetris.actionStop();
+    this.isGameStarted = false;
+}
+
   onGameOver() {
     this.message='Game over. Try again';
-    this.dialog.open(GameOverDialogComponent)
+    this.gameService.finalScore = this.points;
+    this.dialog.open(GameOverDialogComponent);
+    this.isGameOvered = true;
   }
 
   onClearMessage() {

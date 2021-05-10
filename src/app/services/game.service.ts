@@ -10,7 +10,7 @@ import {Player} from "../models/player";
 export class GameService {
   private API_URL = "http://localhost:8080";
   playerName: string;
-
+  finalScore: number;
 
   constructor(private http : HttpClient) { }
 
@@ -18,5 +18,11 @@ export class GameService {
     return this.http.get<Score[]>(this.API_URL + `/scores`, {headers: {
       'Accept': 'application/json'
       }})
+  }
+
+  addScore(score: Score): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(score)
+    return this.http.post(this.API_URL + `/scores`, body, {'headers': headers})
   }
 }

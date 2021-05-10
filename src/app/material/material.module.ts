@@ -12,8 +12,15 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {ScoreListDialogComponent} from "../dialogs/score-list-dialog/score-list-dialog.component";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
-const MAT_DIALOG_GLOBAL_CONFIG = {
+const MAT_SNACKBAR_GLOBAL_CONFIG: MatSnackBarConfig = {
+  duration: 2500,
+  verticalPosition: 'bottom',
+  horizontalPosition: 'center'
+}
+
+const MAT_DIALOG_GLOBAL_CONFIG: MatDialogConfig = {
   width: '700px',
   hasBackdrop: true
 }
@@ -29,13 +36,15 @@ const  MATERIAL_MODULES = [
   MatCheckboxModule,
   MatSelectModule,
   MatToolbarModule,
-  MatDividerModule
+  MatDividerModule,
+  MatTooltipModule
 ]
 
 @NgModule({
   exports: [...MATERIAL_MODULES],
   providers: [
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: MAT_DIALOG_GLOBAL_CONFIG }
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: MAT_DIALOG_GLOBAL_CONFIG },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: MAT_SNACKBAR_GLOBAL_CONFIG }
   ]
 })
 export class MaterialModule { }
