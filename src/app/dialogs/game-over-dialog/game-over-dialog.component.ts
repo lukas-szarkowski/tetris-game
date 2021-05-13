@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {GameService} from "../../services/game.service";
 import {Router} from "@angular/router";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Score} from "../../models/score";
 
@@ -21,7 +21,8 @@ export class GameOverDialogComponent implements OnInit {
   constructor(private gameService: GameService,
               private router: Router,
               private dialogRef: MatDialogRef<GameOverDialogComponent>,
-              private toast: MatSnackBar
+              private toast: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public passedData: any
   ) { }
 
   ngOnInit(): void {
@@ -29,8 +30,8 @@ export class GameOverDialogComponent implements OnInit {
   }
 
   updateScoreData() {
-    this.scoreData.name = this.gameService.playerName;
-    this.scoreData.score = this.gameService.finalScore;
+    this.scoreData.name = this.passedData.name;
+    this.scoreData.score = this.passedData.points;
   }
 
   addScore() {

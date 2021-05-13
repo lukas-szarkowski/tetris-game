@@ -40,7 +40,7 @@ export class ScoreListDialogComponent implements OnInit {
 
   changeSortingTypeDescending() {
     this.sortingType = 'descending';
-    
+
   }
 }
 

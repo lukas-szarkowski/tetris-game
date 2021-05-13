@@ -14,6 +14,7 @@
         <div *ngIf="isGameStarted === false else ifGameFalse" class="alert alert-warning">Game status: <strong>Off</strong></div>
         <ng-template #ifGameFalse><div class="alert alert-info">Game status: <strong>On</strong></div></ng-template>
         <h5>Player's points: <span class="label label-primary">{{ points }}</span></h5>
+        <p><strong>Time:</strong>{{ formatTime(seconds )}}</p>
           <div class="buttons-section">
             <p  class="alert alert-danger" *ngIf="isGameOvered===true">Game over. Reset score to play.</p>
             <button [disabled]="isGameOvered===true" (click)="onStartGame()" class="btn btn-success col-sm-12">Start</button>

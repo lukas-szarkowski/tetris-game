@@ -1,6 +1,7 @@
 <h2 mat-dialog-title>Game over</h2>
 <mat-dialog-content>
   <p>Game over <strong>{{ scoreData.name }}</strong>!!! Your score is <strong>{{ scoreData.score }} points</strong>!</p>
+  <p>Your time of play was <strong>{{ passedData.time }}</strong>. Try again.</p>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button [ngClass]="scoreData.score === 0 ?  'hide-element' : ''" mat-raised-button color="primary" (click)="addScore()">Save score</button>

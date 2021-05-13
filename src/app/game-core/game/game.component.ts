@@ -18,6 +18,8 @@ export class GameComponent implements OnInit {
   public playerName : string;
   isGameStarted : boolean = false;
   isGameOvered : boolean = false;
+  timer: number;
+  seconds: number = 0;
 
   constructor(
     private _hotkeysService: HotkeysService,
@@ -64,17 +66,26 @@ export class GameComponent implements OnInit {
 onStartGame() {
     this._tetris.actionStart();
     this.isGameStarted = true;
+    this.startOrResumeGameTime();
 }
 
 onStopGame() {
     this._tetris.actionStop();
     this.isGameStarted = false;
+    clearInterval(this.timer);
 }
 
   onGameOver() {
     this.message='Game over. Try again';
     this.gameService.finalScore = this.points;
-    this.dialog.open(GameOverDialogComponent);
+    this.dialog.open(GameOverDialogComponent, {
+      data: {
+        name: this.playerName,
+        points: this.points,
+        time: this.formatTime(this.seconds),
+      }
+    });
+    clearInterval(this.timer)
     this.isGameOvered = true;
   }
 
@@ -88,6 +99,12 @@ onStopGame() {
 
   openInstructions() {
     this.dialog.open(ControlInstructionsDialogComponent)
+  }
+
+  startOrResumeGameTime() {
+     this.timer = setInterval(() => {
+      this.seconds = this.seconds + 1;
+    }, 1000)
   }
 
   private _addHotkeys() {
@@ -116,6 +133,17 @@ onStopGame() {
   }
 
 
+  formatTime(seconds) {
+    if (isNaN(seconds)) {
+      return "00:00"
+    }
+
+    const date = new Date(seconds * 1000);
+    const mm = date.getUTCMinutes().toString().padStart(2, "0");
+    const ss = date.getUTCSeconds().toString().padStart(2, "0");
+
+    return `${mm}:${ss}`;
+  }
 
   onExitGame() {
     this.router.navigate(['']);
