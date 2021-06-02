@@ -4,7 +4,10 @@
       <h4 class="intro-header">Tetris</h4>
     </mat-card-header>
     <mat-card-content>
-      <app-player-form></app-player-form>
+      <app-player-form
+        (changeColorPaletteToBW)="changeColorPaletteToBW($event)"
+        (backToNormalColors)="backToNormalColors($event)"
+      ></app-player-form>
     </mat-card-content>
   </mat-card>
 </div>

@@ -11,6 +11,7 @@ export class GameService {
   private API_URL = "http://localhost:8080";
   playerName: string;
   finalScore: number;
+  highContrastColors: boolean = false;
 
   constructor(private http : HttpClient) { }
 

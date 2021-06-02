@@ -20,6 +20,7 @@ export class GameComponent implements OnInit {
   isGameOvered : boolean = false;
   timer: number;
   seconds: number = 0;
+  highContrastColors: boolean = false;
 
   constructor(
     private _hotkeysService: HotkeysService,
@@ -32,7 +33,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.playerName = this.gameService.playerName;
-    console.log(this.isGameStarted)
+    this.highContrastColors = this.gameService.highContrastColors;
   }
 
   @ViewChild('game')
@@ -105,6 +106,14 @@ onStopGame() {
      this.timer = setInterval(() => {
       this.seconds = this.seconds + 1;
     }, 1000)
+  }
+
+  changColorsToBW() {
+    this.highContrastColors = true;
+  }
+
+  changColorsToNormal() {
+    this.highContrastColors = false;
   }
 
   private _addHotkeys() {

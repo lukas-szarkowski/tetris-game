@@ -12,4 +12,19 @@
   >
     Play
   </button>
+  <button
+    class="btn btn-info margin-top-15"
+    (click)="changeColorsToBW()"
+    *ngIf="highContrastColors===false else backToColorsButton"
+  >
+    Set high contrast
+  </button>
 </div>
+<ng-template #backToColorsButton>
+  <button
+    class="btn btn-warning margin-top-15"
+    (click)="changeColorsToNormal()"
+  >
+    Back to normal colors
+  </button>
+</ng-template>

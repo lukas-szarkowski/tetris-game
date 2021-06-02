@@ -11,6 +11,9 @@ import {GameService} from "../../services/game.service"
   styleUrls: ['./player-form.component.scss']
 })
 export class PlayerFormComponent implements OnInit {
+  @Input()  highContrastColors: boolean = false;
+  @Output() changeColorPaletteToBW: EventEmitter<boolean> = new EventEmitter()
+  @Output() backToNormalColors: EventEmitter<boolean> = new EventEmitter()
 
   playerName :string = "";
   constructor(
@@ -24,5 +27,15 @@ export class PlayerFormComponent implements OnInit {
 onSubmitForm() {
     this.gameService.playerName = this.playerName;
     this.router.navigate(["/game"])
+}
+
+changeColorsToBW() {
+   this.highContrastColors = true;
+   this.changeColorPaletteToBW.emit(this.highContrastColors)
+}
+
+changeColorsToNormal() {
+    this.highContrastColors = false;
+    this.backToNormalColors.emit(this.highContrastColors);
 }
 }
