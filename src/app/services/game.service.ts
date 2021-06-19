@@ -9,7 +9,7 @@ import {Player} from "../models/player";
 })
 export class GameService {
   private API_URL = "http://localhost:8080";
-  playerName: string;
+  playerName;
   finalScore: number;
   highContrastColors: boolean = false;
 

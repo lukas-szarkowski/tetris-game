@@ -7,7 +7,7 @@ import {AppRoutingModule} from "../app-routing.module";
 import {MaterialModule} from "../material/material.module";
 import {TetrisCoreModule} from "ngx-tetris";
 import {ScoreListDialogComponent} from "../dialogs/score-list-dialog/score-list-dialog.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [PlayerFormComponent, GameComponent, IntroComponent],
@@ -16,7 +16,8 @@ import {FormsModule} from "@angular/forms";
     AppRoutingModule,
     MaterialModule,
     TetrisCoreModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [ScoreListDialogComponent],
   exports: [
