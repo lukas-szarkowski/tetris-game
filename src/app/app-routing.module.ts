@@ -8,7 +8,7 @@ import {GameGuard} from "./guards/game.guard";
 const routes : Routes = [
   { path: '', redirectTo: '/intro', pathMatch: 'full' },
   { path: 'intro', component: IntroComponent },
-  { path: 'game', component: GameComponent, canActivate: [GameGuard] }
+  { path: 'game/:colors', component: GameComponent, canActivate: [GameGuard] }
 ]
 
 @NgModule({

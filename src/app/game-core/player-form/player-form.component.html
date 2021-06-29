@@ -16,8 +16,8 @@
   </form>
   <button
     class="btn btn-info margin-top-15"
-    (click)="changeColorsToBW()"
-    *ngIf="highContrastColors===false else backToColorsButton"
+    (click) = "normalColors = false"
+    *ngIf="normalColors === true else backToColorsButton"
   >
     Set high contrast
   </button>
@@ -25,7 +25,7 @@
 <ng-template #backToColorsButton>
   <button
     class="btn btn-warning margin-top-15"
-    (click)="changeColorsToNormal()"
+    (click)="normalColors = true"
   >
     Back to normal colors
   </button>

@@ -12,9 +12,8 @@ import {GameService} from "../../services/game.service"
 })
 export class PlayerFormComponent implements OnInit {
   playerForm: FormGroup
-  @Input()  highContrastColors: boolean = false;
-  @Output() changeColorPaletteToBW: EventEmitter<boolean> = new EventEmitter()
-  @Output() backToNormalColors: EventEmitter<boolean> = new EventEmitter()
+  normalColors: boolean = true;
+
 
   constructor(
   private router: Router,
@@ -28,18 +27,15 @@ export class PlayerFormComponent implements OnInit {
 
 onSubmitForm() {
     this.gameService.playerName = this.playerForm.value.playerName
-    this.router.navigate(["/game"])
+
+    if(this.normalColors === true) {
+      this.router.navigate(["/game", 'normal'])
+    } else if(this.normalColors === false) {
+      this.router.navigate(["/game", 'contrast'])
+    }
+
 }
 
-changeColorsToBW() {
-   this.highContrastColors = true;
-   this.changeColorPaletteToBW.emit(this.highContrastColors)
-}
-
-changeColorsToNormal() {
-    this.highContrastColors = false;
-    this.backToNormalColors.emit(this.highContrastColors);
-}
 
 private buildForm() {
     this.playerForm = this.formBuilder.group({

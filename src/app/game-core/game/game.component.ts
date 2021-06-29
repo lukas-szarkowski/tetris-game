@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {Hotkey, HotkeysService} from 'angular2-hotkeys';
 import { TetrisCoreComponent } from 'ngx-tetris';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from "@angular/material/dialog";
 import {ScoreListDialogComponent} from "../../dialogs/score-list-dialog/score-list-dialog.component";
 import {ControlInstructionsDialogComponent} from "../../dialogs/control-instructions-dialog/control-instructions-dialog.component";
@@ -26,14 +26,21 @@ export class GameComponent implements OnInit {
     private _hotkeysService: HotkeysService,
     private router: Router,
     private dialog: MatDialog,
-    private gameService: GameService
+    private gameService: GameService,
+    private _route: ActivatedRoute
   ) {
     this._addHotkeys();
    }
 
   ngOnInit(): void {
     this.playerName = this.gameService.playerName;
-    this.highContrastColors = this.gameService.highContrastColors;
+
+    if (this._route.snapshot.params.colors === "normal") {
+      this.highContrastColors = false
+    } else if (this._route.snapshot.params.colors === "contrast") {
+      this.highContrastColors = true
+    }
+    console.log(this.highContrastColors);
   }
 
   @ViewChild('game')
